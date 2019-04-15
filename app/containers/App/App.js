@@ -15,12 +15,13 @@ import FeaturePage from 'containers/FeaturePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
+import LoginPage from '../LoginPage/Loadable';
 import './style.scss';
 
 const App = () => (
   <div className="app-wrapper">
     <Helmet
-      titleTemplate="%s - React.js Boilerplate"
+      titleTemplate="%s - Nore Chatting"
       defaultTitle="React.js Boilerplate"
     >
       <meta name="description" content="A React.js Boilerplate application" />
@@ -28,6 +29,7 @@ const App = () => (
     <Header />
     <Switch>
       <Route exact path="/" component={HomePage} />
+      <Route path="/login" component={LoginPage} />
       <Route path="/features" component={FeaturePage} />
       <Route path="" component={NotFoundPage} />
     </Switch>
