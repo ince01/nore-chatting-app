@@ -4,7 +4,6 @@ import { createStructuredSelector } from 'reselect';
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
 import {
-  makeSelectRepos,
   makeSelectLoading,
   makeSelectError
 } from 'containers/App/selectors';
@@ -24,7 +23,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = createStructuredSelector({
-  repos: makeSelectRepos(),
   username: makeSelectUsername(),
   loading: makeSelectLoading(),
   error: makeSelectError()

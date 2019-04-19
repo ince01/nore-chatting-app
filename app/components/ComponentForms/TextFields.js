@@ -3,12 +3,13 @@ import { TextField } from '@material-ui/core';
 
 class TextFieldCustom extends Component {
   render() {
-    const { label, placeholder, meta: { touched, error, warning }, input } = this.props;
+    const { label, placeholder, meta: { touched, error, warning }, input, type } = this.props;
+
     return (
       <TextField
-        name={label}
         label={label}
         placeholder={placeholder}
+        type={type}
         margin="normal"
         error={touched && error}
         {...input}
