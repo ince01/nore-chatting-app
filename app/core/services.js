@@ -14,10 +14,10 @@ export default class API {
   }
 
   post(action, params) {
-    let token = localStorage.getItem('token') || '';
+    let sessionToken = localStorage.getItem('sessionToken') || '';
 
-    if (_.isString(token)) {
-      this.axios.defaults.headers.common['Authorization'] = `jwt ${token}`;
+    if (_.isString(sessionToken)) {
+      this.axios.defaults.headers.common['Authorization'] = `jwt ${sessionToken}`;
     }
 
     return new Promise((resolve, reject) => {

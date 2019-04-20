@@ -1,29 +1,28 @@
 import { fromJS, Map } from 'immutable';
 
 import {
-  LOGIN_REQUEST,
-  LOGIN_SUCCESS,
-  LOGIN_ERROR
+  REGISTER_REQUEST,
+  REGISTER_SUCCESS,
+  REGISTER_ERROR
 } from './constants';
 
-// The initial state of the App
 const initialState = fromJS({
   loading: false,
   error: false,
-  currentUser: Map(),
+  registedInfo: Map(),
 });
 
-function appReducer(state = initialState, action) {
+function registerReducer(state = initialState, action) {
   switch (action.type) {
-    case LOGIN_REQUEST:
+    case REGISTER_REQUEST:
       return state
         .set('loading', true)
-        .set('currentUser', Map())
-    case LOGIN_SUCCESS:
+        .set('registedInfo', Map())
+    case REGISTER_SUCCESS:
       return state
         .set('loading', false)
-        .set('currentUser', fromJS(action.data));
-    case LOGIN_ERROR:
+        .set('registedInfo', fromJS(action.data));
+    case REGISTER_ERROR:
       return state
         .set('loading', false)
         .set('error', action.error);
@@ -32,4 +31,4 @@ function appReducer(state = initialState, action) {
   }
 }
 
-export default appReducer;
+export default registerReducer;

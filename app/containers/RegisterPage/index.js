@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
+import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
-import { login } from '../App/actions';
+import reducer from './reducer';
+import { register } from './actions';
 import saga from './saga';
-import LoginForm from './LoginForm';
+import RegisterForm from './RegisterForm';
 
-class LoginPage extends Component {
+class RegisterPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -25,10 +27,10 @@ class LoginPage extends Component {
     return (
       <article className="container">
         <Helmet>
-          <title>Login Page</title>
+          <title>Register Page</title>
         </Helmet>
         <div>
-          <LoginForm
+          <RegisterForm
             onSubmit={this.onSubmit}
             initialValues={initialValues}
             enableReinitialize={true}
@@ -39,15 +41,16 @@ class LoginPage extends Component {
   }
 }
 
-LoginPage.propTypes = {
+RegisterPage.propTypes = {
   onSubmitForm: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  onSubmitForm: (value) => dispatch(login(value))
+  onSubmitForm: (value) => dispatch(register(value))
 });
 
 const withConnect = connect(null, mapDispatchToProps);
-const withSaga = injectSaga({ key: 'loginPage', saga });
+const withReducer = injectReducer({ key: 'registerPage', reducer });
+const withSaga = injectSaga({ key: 'registerPage', saga });
 
-export default compose(withSaga, withConnect)(LoginPage);
+export default compose(withReducer, withSaga, withConnect)(RegisterPage);

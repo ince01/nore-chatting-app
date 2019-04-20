@@ -3,16 +3,24 @@ import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form/immutable'; // <--- immutable import
 import { TextFieldCustom } from '../../components/ComponentForms'
 import { Button } from '@material-ui/core'
-import { Link } from "react-router-dom";
 import validate from './validate';
 import './styles.scss';
 
-class LoginForm extends Component {
+class RegisterForm extends Component {
   render() {
     const { handleSubmit, invalid } = this.props;
     return (
       <form onSubmit={handleSubmit}>
         <div className="login-form">
+          <div className="row">
+            <Field
+              name="fullName"
+              component={TextFieldCustom}
+              label="Full Name"
+              type="string"
+              placeholder="Full Name"
+            />
+          </div>
           <div className="row">
             <Field
               name="email"
@@ -32,15 +40,23 @@ class LoginForm extends Component {
             />
           </div>
           <div className="row">
+            <Field
+              name="confirmPassword"
+              component={TextFieldCustom}
+              label="Confirm Password"
+              type="password"
+              placeholder="Retype your password"
+            />
+          </div>
+          <div className="row">
             <Button
               type="submit"
               variant="outlined"
               color="primary"
               disabled={invalid}
             >
-              Login
+              Register
             </Button>
-            <Link style={{ marginLeft: '20px' }} to='/register' >Register here!</Link>
           </div>
         </div>
       </form>
@@ -48,10 +64,10 @@ class LoginForm extends Component {
   }
 }
 
-LoginForm.propTypes = {
+RegisterForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   invalid: PropTypes.bool,
 };
 
-export default reduxForm({ form: 'loginPage', validate })(LoginForm)
+export default reduxForm({ form: 'registerPage', validate })(RegisterForm)
 
