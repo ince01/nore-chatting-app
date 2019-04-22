@@ -1,33 +1,58 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
+// import PrivateRoute from './PrivateRoute';
 
-import HomePage from 'containers/HomePage/index';
-import FeaturePage from 'containers/FeaturePage/Loadable';
+import FeaturePage from 'containers/FeaturePage/FeaturePage';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
-// import Header from 'components/Header';
-// import Footer from 'components/Footer';
 import LoginPage from '../LoginPage/Loadable';
 import RegisterPage from '../RegisterPage/Loadable';
+
+import _ from 'lodash';
 import './style.scss';
 
-const App = () => (
-  <div className="app-wrapper">
-    <Helmet
-      titleTemplate="%s - Nore Chatting"
-      defaultTitle="Nore Chatting App"
-    >
-      <meta name="description" content="A Chatting application like Zalo" />
-    </Helmet>
-    {/* <Header /> */}
-    <Switch>
-      <Route exact path="/" component={LoginPage} />
-      <Route path="/register" component={RegisterPage} />
-      <Route path="/features" component={FeaturePage} />
-      <Route path="" component={NotFoundPage} />
-    </Switch>
-    {/* <Footer /> */}
-  </div>
-);
+const isAuthenticated = () => {
+  const checker = window.localStorage.getItem('sessionToken');
+  if (checker) {
+    return true;
+  } else return false;
+}
+
+const PrivateRoute = ({ component: Component, ...rest }) => {
+  return (
+    <Route
+      {...rest}
+      render={(props) =>
+        isAuthenticated()
+          ? (<Component {...props} />)
+          : (<Redirect to={{ pathname: "/", state: { from: props.location } }} />)}
+    />
+  );
+}
+
+class App extends Component {
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+    return (
+      <div className="app-wrapper">
+        <Helmet
+          titleTemplate="%s - Nore Chatting"
+          defaultTitle="Nore Chatting App"
+        >
+          <meta name="description" content="A Chatting application like Zalo" />
+        </Helmet>
+        <Switch>
+          <Route exact path="/" component={LoginPage} />
+          <Route path="/register" component={RegisterPage} />
+          <PrivateRoute path="/features" component={FeaturePage} />
+          <Route path="" component={NotFoundPage} />
+        </Switch>
+      </div>
+    )
+  }
+}
 
 export default App;

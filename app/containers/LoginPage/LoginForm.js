@@ -36,7 +36,6 @@ class LoginForm extends Component {
               type="submit"
               variant="outlined"
               color="primary"
-              disabled={invalid}
             >
               Login
             </Button>

@@ -19,6 +19,9 @@ class RegisterPage extends Component {
   }
 
   onSubmit = (value) => {
+    if (this.props.invalid) {
+      return
+    }
     this.props.onSubmitForm(value.toJS());
   }
 

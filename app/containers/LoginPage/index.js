@@ -17,6 +17,9 @@ class LoginPage extends Component {
   }
 
   onSubmit = (value) => {
+    if (this.props.invail) {
+      return
+    }
     this.props.onSubmitForm(value.toJS());
   }
 

@@ -15,6 +15,7 @@ class TextFieldCustom extends Component {
           type={type}
           variant="outlined"
           margin="normal"
+          fullWidth
           error={touched && _.isString(error)}
           helperText={touched && (error || warning)}
           {...input}
