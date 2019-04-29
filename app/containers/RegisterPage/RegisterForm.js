@@ -8,7 +8,7 @@ import './styles.scss';
 
 class RegisterForm extends Component {
   render() {
-    const { handleSubmit, anyTouched } = this.props;
+    const { handleSubmit } = this.props;
     return (
       <form onSubmit={handleSubmit}>
         <div className="login-form">
@@ -43,15 +43,6 @@ class RegisterForm extends Component {
                 placeholder="username@email.com"
               />
             </div>
-            {/* <div className="col">
-              <Field
-                name="fullName"
-                component={TextFieldCustom}
-                label="Full Name"
-                type="string"
-                placeholder="Full Name"
-              />
-            </div> */}
           </div>
           <div className="row">
             <div className="col">

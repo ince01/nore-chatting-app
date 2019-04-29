@@ -7,6 +7,7 @@ import FeaturePage from 'containers/FeaturePage/FeaturePage';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import LoginPage from '../LoginPage/Loadable';
 import RegisterPage from '../RegisterPage/Loadable';
+import ChatPage from '../ChatPage/index';
 
 import _ from 'lodash';
 import './style.scss';
@@ -48,6 +49,7 @@ class App extends Component {
           <Route exact path="/" component={LoginPage} />
           <Route path="/register" component={RegisterPage} />
           <PrivateRoute path="/features" component={FeaturePage} />
+          <PrivateRoute path="/home" component={ChatPage} />
           <Route path="" component={NotFoundPage} />
         </Switch>
       </div>
