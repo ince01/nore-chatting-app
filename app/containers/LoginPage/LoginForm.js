@@ -12,35 +12,33 @@ class LoginForm extends Component {
     const { handleSubmit, invalid } = this.props;
     return (
       <form onSubmit={handleSubmit}>
-        <div className="login-form">
-          <div className="row">
-            <Field
-              name="email"
-              component={TextFieldCustom}
-              label="Email"
-              type="string"
-              placeholder="username@email.com"
-            />
-          </div>
-          <div className="row">
-            <Field
-              name="password"
-              component={TextFieldCustom}
-              label="Password"
-              type="password"
-              placeholder="Your password"
-            />
-          </div>
-          <div className="row">
-            <Button
-              type="submit"
-              variant="outlined"
-              color="primary"
-            >
-              Login
+        <div className="row">
+          <Field
+            name="email"
+            component={TextFieldCustom}
+            label="Email"
+            type="string"
+            placeholder="username@email.com"
+          />
+        </div>
+        <div className="row">
+          <Field
+            name="password"
+            component={TextFieldCustom}
+            label="Password"
+            type="password"
+            placeholder="Your password"
+          />
+        </div>
+        <div className="row">
+          <Button
+            type="submit"
+            variant="outlined"
+            color="primary"
+          >
+            Login
             </Button>
-            <Link style={{ marginLeft: '20px' }} to='/register' >Register here!</Link>
-          </div>
+          <Link style={{ marginLeft: '20px' }} to='/register' >Register here!</Link>
         </div>
       </form>
     )

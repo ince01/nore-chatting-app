@@ -6,11 +6,12 @@ import _ from 'lodash';
 class InputButtonField extends Component {
 
   handleClick = () => {
+    console.log(this.props.input.value)
     console.log('ssss')
   }
 
   render() {
-    const { placeholder, input, name } = this.props;
+    const { placeholder, input } = this.props;
     console.log(this.props.input);
     return (
       <div className="input-group mb-3">
@@ -23,7 +24,7 @@ class InputButtonField extends Component {
           value={input.value}
         />
         <div className="input-group-append">
-          <button className="btn btn-outline-secondary" type="button"><Send /></button>
+          <button className="btn btn-outline-secondary" type="button" onClick={this.handleClick}><Send /></button>
         </div>
       </div>
 

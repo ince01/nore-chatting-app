@@ -26,18 +26,18 @@ class LoginPage extends Component {
   render() {
     const { initialValues } = this.state;
     return (
-      <article className="container">
+      <div className="login-page">
         <Helmet>
           <title>Login Page</title>
         </Helmet>
-        <div>
+        <div >
           <LoginForm
             onSubmit={this.onSubmit}
             initialValues={initialValues}
             enableReinitialize={true}
           />
         </div>
-      </article>
+      </div>
     )
   }
 }

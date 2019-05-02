@@ -7,7 +7,7 @@ import FeaturePage from 'containers/FeaturePage/FeaturePage';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import LoginPage from '../LoginPage/Loadable';
 import RegisterPage from '../RegisterPage/Loadable';
-import ChatPage from '../ChatPage/index';
+import ChatPage from '../ChatPage/Loadable';
 
 import _ from 'lodash';
 import './style.scss';
@@ -24,7 +24,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       render={(props) =>
-        isAuthenticated()
+        isAuthenticated
           ? (<Component {...props} />)
           : (<Redirect to={{ pathname: "/", state: { from: props.location } }} />)}
     />
