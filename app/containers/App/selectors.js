@@ -28,10 +28,16 @@ const makeSelectLocation = () => createSelector(
   (routeState) => routeState.get('location').toJS()
 );
 
+const makeSelectPopupLoginStatus = () => createSelector(
+  selectGlobal,
+  (globalState) => globalState.get('isOpenPopup')
+);
+
 export {
   selectGlobal,
   makeSelectCurrentUser,
   makeSelectLoading,
   makeSelectError,
   makeSelectLocation,
+  makeSelectPopupLoginStatus
 };

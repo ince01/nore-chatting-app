@@ -1,39 +1,28 @@
-import React, { Component } from 'react';
-import { TextField } from '@material-ui/core';
-import PropTypes from 'prop-types';
-import _ from 'lodash';
+import React from 'react';
 
-class TextFieldCustom extends Component {
+class TextField extends React.Component {
   render() {
-    const { label, placeholder, meta: { touched, error, warning }, input, type, name } = this.props;
+    const { input, label, placeholder, type, meta: { touched, error, warning } } = this.props;
+
     return (
-      <div>
-        <TextField
-          name={name}
-          label={label}
-          placeholder={placeholder}
-          type={type}
-          variant="outlined"
-          margin="normal"
-          fullWidth
-          error={touched && _.isString(error)}
-          helperText={touched && (error || warning)}
-          {...input}
-        />
+      <div className="text-field-container">
+        <div className="text-field-label">{label}</div>
+        <div className="input-group mb-3">
+          <div className="input-field">
+            <input {...input} placeholder={placeholder} type={type} className="form-control input-box" />
+            {touched && (
+              (error && (
+                <div className="alert alert-danger alert-field" role="alert">{error}</div>
+              )) ||
+              (warning && (
+                <div className="alert alert-warning alert-field" role="alert">{warning}</div>
+              ))
+            )}
+          </div>
+        </div>
       </div>
     )
   }
 }
 
-TextFieldCustom.propTypes = {
-  label: PropTypes.string,
-  placeholder: PropTypes.string,
-  touched: PropTypes.bool,
-  error: PropTypes.any,
-  warning: PropTypes.any,
-  input: PropTypes.any,
-  type: PropTypes.any,
-  name: PropTypes.string,
-};
-
-export default TextFieldCustom
+export default TextField;

@@ -15,3 +15,5 @@ export const LOGIN_REQUEST = 'App/LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'App/LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'App/LOGIN_ERROR';
 
+export const POPUP_LOGIN_OPEN = 'popupLogin/POPUP_LOGIN_OPEN';
+export const POPUP_LOGIN_CLOSE = 'popupLogin/POPUP_LOGIN_CLOSE';

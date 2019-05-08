@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form/immutable'; // <--- immutable import
-import { TextFieldCustom, RadioFields } from '../../components/ComponentForms'
+import { TextFields, RadioFields } from '../../components/ComponentForms'
 import { Button } from '@material-ui/core'
 import validate from './validate';
 import './styles.scss';
@@ -16,7 +16,7 @@ class RegisterForm extends Component {
             <div className="col">
               <Field
                 name="fullName"
-                component={TextFieldCustom}
+                component={TextFields}
                 label="Full Name"
                 type="string"
                 placeholder="Full Name"
@@ -37,7 +37,7 @@ class RegisterForm extends Component {
             <div className="col">
               <Field
                 name="email"
-                component={TextFieldCustom}
+                component={TextFields}
                 label="Email"
                 type="string"
                 placeholder="username@email.com"
@@ -48,7 +48,7 @@ class RegisterForm extends Component {
             <div className="col">
               <Field
                 name="password"
-                component={TextFieldCustom}
+                component={TextFields}
                 label="Password"
                 type="password"
                 placeholder="Your password"
@@ -57,7 +57,7 @@ class RegisterForm extends Component {
             <div className="col">
               <Field
                 name="confirmPassword"
-                component={TextFieldCustom}
+                component={TextFields}
                 label="Confirm Password"
                 type="password"
                 placeholder="Retype your password"

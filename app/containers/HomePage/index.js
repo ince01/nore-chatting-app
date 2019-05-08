@@ -1,37 +1,37 @@
+
+import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { createStructuredSelector } from 'reselect';
-import injectReducer from 'utils/injectReducer';
-import injectSaga from 'utils/injectSaga';
-import {
-  makeSelectLoading,
-  makeSelectError
-} from 'containers/App/selectors';
-import { loadRepos } from '../App/actions';
-import { changeUsername } from './actions';
-import { makeSelectUsername } from './selectors';
-import reducer from './reducer';
-import saga from './saga';
-import HomePage from './HomePage';
+import PopupLogin from '../PopupLogin';
+import { popupLoginOpen } from '../App/actions';
+import { Button } from 'react-bootstrap';
+import PropTypes from 'prop-types';
+import './style.scss';
+
+class HomePage extends React.PureComponent {
+  render() {
+    return (
+      <div className="home-page">
+        <section className="centered d-flex justify-content-center">
+          <div className="m-2">
+            <Button type="button" className="btn btn-secondary" onClick={() => { this.props.openPopup() }} >Login</Button>
+          </div>
+        </section>
+        <PopupLogin />
+      </div>
+    );
+  }
+}
+
+HomePage.propTypes = {
+  openPopup: PropTypes.func,
+  isOpen: PropTypes.bool,
+};
 
 const mapDispatchToProps = (dispatch) => ({
-  onChangeUsername: (evt) => dispatch(changeUsername(evt.target.value)),
-  onSubmitForm: (evt) => {
-    if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-    dispatch(loadRepos());
-  }
+  openPopup: () => dispatch(popupLoginOpen()),
 });
 
-const mapStateToProps = createStructuredSelector({
-  username: makeSelectUsername(),
-  loading: makeSelectLoading(),
-  error: makeSelectError()
-});
+const withConnect = connect(null, mapDispatchToProps);
 
-const withConnect = connect(mapStateToProps, mapDispatchToProps);
-
-const withReducer = injectReducer({ key: 'home', reducer });
-const withSaga = injectSaga({ key: 'home', saga });
-
-export default compose(withReducer, withSaga, withConnect)(HomePage);
-export { mapDispatchToProps };
+export default compose(withConnect)(HomePage);

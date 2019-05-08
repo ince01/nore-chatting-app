@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 import { Switch, Route, Redirect } from 'react-router-dom';
-// import PrivateRoute from './PrivateRoute';
-
 import FeaturePage from 'containers/FeaturePage/FeaturePage';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import LoginPage from '../LoginPage/Loadable';
+import HomePage from '../HomePage/Loadable';
 import RegisterPage from '../RegisterPage/Loadable';
 import ChatPage from '../ChatPage/Loadable';
 
@@ -24,7 +22,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       render={(props) =>
-        isAuthenticated
+        isAuthenticated()
           ? (<Component {...props} />)
           : (<Redirect to={{ pathname: "/", state: { from: props.location } }} />)}
     />
@@ -46,7 +44,7 @@ class App extends Component {
           <meta name="description" content="A Chatting application like Zalo" />
         </Helmet>
         <Switch>
-          <Route exact path="/" component={LoginPage} />
+          <Route exact path="/" component={HomePage} />
           <Route path="/register" component={RegisterPage} />
           <PrivateRoute path="/features" component={FeaturePage} />
           <PrivateRoute path="/home" component={ChatPage} />

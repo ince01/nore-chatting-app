@@ -30,9 +30,8 @@ export default class API {
             throw new Error(response.statusText || 'Invalid request.');
           }
 
-          const { status, result } = response.data;
-
-          if (response.status && status && result.sessionToken) {
+          const { sucess, result } = response.data;
+          if (sucess && result.sessionToken) {
             localStorage.setItem('sessionToken', result.sessionToken);
           }
 
