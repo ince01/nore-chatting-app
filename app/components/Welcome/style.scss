@@ -1,0 +1,53 @@
+.customlistview{
+	padding:5px;
+}
+
+.customlistview imagecontainer{
+	float:left;
+	margin-right:10px;
+}
+.customlistview h4{
+	margin-top:-5px;
+}
+.customlistview p{
+	margin-bottom:-5px;
+	color:#bfbfbf;
+}
+
+.customlistview:hover{
+	background-color:#d9d9d9;
+}
+
+.imagecontainer{
+    position: relative;
+    margin-right:5px;
+    float:left;
+       // position you want
+}
+
+.online{	
+    position:relative;
+    height: 15px;
+    width: 15px;
+    background-color: #00ff00;
+    border-radius: 50%;
+    border-width: 2px;
+    border-color: #d9d9d9;
+    display: block;
+    margin-top:-20%;   
+    margin-left:67% ;
+    z-index:2;
+}
+
+.offline{	
+   position:relative;
+   height: 15px;
+   width: 15px;
+   background-color:  #a6a6a6;
+   border-radius: 50%;
+   display: block;
+   margin-top:-20%;   
+   margin-left:67% ;
+   z-index:2;
+}
+  

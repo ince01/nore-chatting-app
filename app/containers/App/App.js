@@ -16,7 +16,8 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import LoginPage from '../LoginPage/Loadable';
-import ChatPage from '../ChatPage/ChatPage'
+import ChatPage from '../ChatPage/ChatPage';
+import Grid from '../Grid/Grid';
 import './style.scss';
 
 const App = () => (
@@ -33,6 +34,7 @@ const App = () => (
       <Route path="/chat" component={ChatPage} />
       <Route path="/features" component={FeaturePage} />
       <Route path="" component={NotFoundPage} />
+      <Route path="/grid" component={Grid} />
     </Switch>
     {/* <Footer /> */}
   </div>
