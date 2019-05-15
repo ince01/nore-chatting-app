@@ -1,6 +1,6 @@
 import TextFields from './TextFields';
 import RadioFields from './RadioFields'
-// import DatePicker from './DatePickers';
-import InputButtonField from './InputButtonField';
+import Avatar from './Avatar';
+import Searchfields from './SearchFields';
 
-export { TextFields, RadioFields, InputButtonField } 
+export { TextFields, RadioFields, Avatar, Searchfields } 

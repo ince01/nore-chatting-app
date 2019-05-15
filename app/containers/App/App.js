@@ -6,6 +6,7 @@ import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import HomePage from '../HomePage/Loadable';
 import RegisterPage from '../RegisterPage/Loadable';
+import ChatPage from '../ChatPage/index';
 import _ from 'lodash';
 import './style.scss';
 
@@ -45,6 +46,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/register" component={RegisterPage} />
+          <PrivateRoute path="/chat" component={ChatPage} />
           <Route path="" component={NotFoundPage} />
         </Switch>
         <ReduxToastr
