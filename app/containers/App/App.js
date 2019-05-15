@@ -3,12 +3,9 @@ import { Helmet } from 'react-helmet';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import ReduxToastr from 'react-redux-toastr';
 import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
-import FeaturePage from 'containers/FeaturePage/FeaturePage';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import HomePage from '../HomePage/Loadable';
 import RegisterPage from '../RegisterPage/Loadable';
-import ChatPage from '../ChatPage/Loadable';
-
 import _ from 'lodash';
 import './style.scss';
 
@@ -48,8 +45,6 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/register" component={RegisterPage} />
-          <PrivateRoute path="/features" component={FeaturePage} />
-          <PrivateRoute path="/home" component={ChatPage} />
           <Route path="" component={NotFoundPage} />
         </Switch>
         <ReduxToastr

@@ -14,9 +14,9 @@ export function* handleLogin(action) {
     const userData = yield call(request, requestURL, params);
     yield put(loginSuccess(userData));
     yield put(popupLoginClose())
-    yield put(toastr())
     yield put(push('/home'))
   } catch (err) {
+    console.log(err)
     yield put(loginError(err));
     toastr.error(err.message);
   }
