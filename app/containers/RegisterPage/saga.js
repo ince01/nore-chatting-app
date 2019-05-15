@@ -2,6 +2,7 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
 import { REGISTER_REQUEST } from '../RegisterPage/constants';
 import { registerSuccess, registerError } from './actions';
+import { toastr } from 'react-redux-toastr';
 import _ from 'lodash';
 import request from 'utils/request';
 
@@ -13,9 +14,11 @@ export function* handleRegister(action) {
   try {
     const resData = yield call(request, requestURL, params);
     yield put(registerSuccess(resData));
-    yield put(push('/'))
+    toastr.success('Register success');
+    yield put(push('/'));
   } catch (err) {
     yield put(registerError(err));
+    toastr.success(err.message);
   }
 }
 

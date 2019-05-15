@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import ReduxToastr from 'react-redux-toastr';
+import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
 import FeaturePage from 'containers/FeaturePage/FeaturePage';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import HomePage from '../HomePage/Loadable';
@@ -50,6 +52,14 @@ class App extends Component {
           <PrivateRoute path="/home" component={ChatPage} />
           <Route path="" component={NotFoundPage} />
         </Switch>
+        <ReduxToastr
+          timeOut={2500}
+          newestOnTop={false}
+          preventDuplicates
+          position="bottom-right"
+          transitionIn="fadeIn"
+          transitionOut="fadeOut"
+          closeOnToastrClick />
       </div>
     )
   }
