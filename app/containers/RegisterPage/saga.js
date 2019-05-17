@@ -8,7 +8,7 @@ import request from 'utils/request';
 
 export function* handleRegister(action) {
 
-  const requestURL = 'register';
+  const requestURL = '/register';
   const params = _.pick(action.data, ['email', 'password', 'fullName', 'gender']);
 
   try {

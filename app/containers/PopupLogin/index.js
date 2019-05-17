@@ -1,25 +1,20 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import injectSaga from 'utils/injectSaga';
-import { login, popupLoginClose } from '../App/actions';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { popupLoginClose } from '../App/actions';
+import { login } from '../authProvider/actions';
 import { createStructuredSelector } from 'reselect';
-import { makeSelectPopupLoginStatus, makeSelectError } from '../App/selectors';
-import _ from 'lodash';
-import saga from './saga';
+import { makeSelectPopupLoginStatus } from '../App/selectors';
+import { Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import LoginForm from './LoginForm';
-import { Modal } from 'react-bootstrap';
+import _ from 'lodash';
 import './styles.scss';
 
 class PopupLogin extends Component {
 
   onSubmit = (value) => {
-    if (!this.props.invail) {
-      this.props.onSubmitForm(value);
-      // this.props.closePopup();
-    }
+    this.props.onSubmitForm(value);
   }
 
   render() {
@@ -51,7 +46,6 @@ PopupLogin.propTypes = {
 
 const mapStateToProps = createStructuredSelector({
   isOpen: makeSelectPopupLoginStatus(),
-  error: makeSelectError(),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -60,6 +54,5 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
-const withSaga = injectSaga({ key: 'popupLogin', saga });
 
-export default compose(withConnect, withSaga)(PopupLogin);
+export default withConnect(PopupLogin);

@@ -4,9 +4,13 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import ReduxToastr from 'react-redux-toastr';
 import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import HomePage from '../HomePage/Loadable';
+import HomePage from '../HomePage/index';
 import RegisterPage from '../RegisterPage/Loadable';
 import ChatPage from '../ChatPage/index';
+
+import AuthProvider from '../authProvider';
+import ControlProvider from '../ControlProvider';
+
 import _ from 'lodash';
 import './style.scss';
 
@@ -34,6 +38,10 @@ class App extends Component {
     super(props)
   }
 
+  componentDidMount() {
+    this.props.getCurrentUser();
+  }
+
   render() {
     return (
       <div className="app-wrapper">
@@ -43,6 +51,8 @@ class App extends Component {
         >
           <meta name="description" content="A Chatting application like Zalo" />
         </Helmet>
+        <AuthProvider />
+        <ControlProvider />
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/register" component={RegisterPage} />

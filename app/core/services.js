@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toastr } from 'react-redux-toastr'
 import _ from 'lodash';
 
 export default class API {
@@ -14,9 +15,17 @@ export default class API {
   }
 
   post(action, params) {
-    let sessionToken = localStorage.getItem('sessionToken') || '';
+    let sessionToken = localStorage.getItem('sessionToken');
 
-    if (_.isString(sessionToken)) {
+    const publicActions = ['/register', '/login'];
+
+    if (publicActions.indexOf(action) === -1 && _.isNull(sessionToken)) {
+      return Promise.resolve(true);
+    } else if (action === 'logout') {
+      localStorage.setItem('logout', Date.now())
+    }
+
+    if (_.isString(sessionToken) && !_.isNull(sessionToken)) {
       this.axios.defaults.headers.common['Authorization'] = `jwt ${sessionToken}`;
     }
 
@@ -30,9 +39,9 @@ export default class API {
             throw new Error(response.statusText || 'Invalid request.');
           }
 
-          const { sucess, result } = response.data;
-          if (sucess && result.sessionToken) {
-            localStorage.setItem('sessionToken', result.sessionToken);
+          const { sucess, result, sessionToken } = response.data;
+          if (sucess && result && sessionToken) {
+            localStorage.setItem('sessionToken', sessionToken);
           }
 
           const responseData = result || response.data;

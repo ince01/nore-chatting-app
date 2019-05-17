@@ -1,0 +1,78 @@
+// style.scss
+$size_emoji: 30px;
+$padding_emoji: 25px;
+$width_picker: 300px;
+$height_picker: 350px;
+$bg_picker: #f1f1f1;
+@import "./node_modules/emoji-picker-react/dist/universal/style.scss";
+
+// .tanh{
+//   position: relative;
+//   button {
+//     position: absolute;
+//     top: 15px;
+//     left: 15px;
+//   }
+//   textarea{
+//     padding-left: 80px !important;
+//   }
+// }
+
+.header {
+  display: flex;
+  flex-direction: row;
+  flex: initial;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border-bottom: solid 1px #dadadc;
+
+  .info-fr {
+    display: flex;
+    flex-direction: column;
+    h4 {
+      font-weight: bold;
+    }
+  }
+
+  .avatar {
+    img {
+      height: 50px;
+      width: 50px;
+    }
+  }
+}
+
+.message-container {
+  flex: auto;
+  width: 70%;
+  max-width: 1300px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+
+  .messages {
+    flex: auto;
+    background-color: rgba(230, 229, 229, 0.43);
+  }
+
+  .type-control {
+    flex: initial;
+    display: flex;
+    flex-direction: row;
+    margin: 15px 0px 25px 0px;
+    justify-content: center;
+
+    textarea {
+      width: 100%;
+      padding: 18px;
+      border-radius: 15px;
+      border-style: none;
+      background-color: #f1f1f4;
+      display: flex;
+      flex-direction: row;
+      resize: none;
+      outline: none;
+    }
+  }
+}

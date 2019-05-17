@@ -1,0 +1,70 @@
+.list-contact {
+  display: flex;
+  flex-direction: column;
+
+  .item {
+    display: flex;
+    flex-direction: row;
+    padding: 8px;
+
+    .avatar {
+      height: 36px;
+      width: 36px;
+    }
+    .name {
+      margin-left: 10px;
+      align-self: center;
+    }
+  }
+}
+
+.list-chat {
+  display: flex;
+  flex-direction: column;
+
+  .item {
+    display: flex;
+    flex-direction: row;
+    padding: 8px;
+
+    .avatar {
+      display: flex;
+      img {
+        height: 36px;
+        width: 36px;
+        align-self: center;
+      }
+    }
+
+    .item-info {
+      display: flex;
+      flex-direction: column;
+      margin-left: 10px;
+      flex-basis: 180px;
+
+      .name {
+        font-size: 16px;
+      }
+      .content {
+        font-size: 12px;
+      }
+    }
+
+    .item-descr {
+      margin-left: 8px;
+      font-size: 12px;
+    }
+  }
+}
+
+.title {
+  align-self: center;
+}
+
+.avatar-welcome-page {
+  align-self: center;
+  img {
+    height: 120px;
+    width: 120px;
+  }
+}
