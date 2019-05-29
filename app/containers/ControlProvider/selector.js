@@ -7,7 +7,13 @@ const makeSelectNavTabStatus = () => createSelector(
   (controlState) => controlState.get('navTabStatus')
 );
 
+const makeSelectPopupAddFrStatus = () => createSelector(
+  selectControl,
+  (controlState) => controlState.get('isOpenPopupAddFr')
+);
+
 export {
   selectControl,
   makeSelectNavTabStatus,
+  makeSelectPopupAddFrStatus,
 };

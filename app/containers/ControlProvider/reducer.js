@@ -3,10 +3,12 @@ import { TAB_CHAT } from 'utils/constants';
 
 import {
   ON_CHANGE_TAB,
+  OPEN_POPUP_ADDFR, CLOSE_POPUP_ADDFR,
 } from './constants';
 
 const initialState = fromJS({
   navTabStatus: TAB_CHAT,
+  isOpenPopupAddFr: false,
 });
 
 function controlReducer(state = initialState, action) {
@@ -14,6 +16,12 @@ function controlReducer(state = initialState, action) {
     case ON_CHANGE_TAB:
       return state
         .set('navTabStatus', action.status);
+    case OPEN_POPUP_ADDFR:
+      return state
+        .set('isOpenPopupAddFr', true);
+    case CLOSE_POPUP_ADDFR:
+      return state
+        .set('isOpenPopupAddFr', false);
     default:
       return state;
   }

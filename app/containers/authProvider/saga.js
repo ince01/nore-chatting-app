@@ -23,7 +23,7 @@ export function* handleLogin(action) {
 }
 
 export function* handleGetCurrentUser() {
-  const requestURL = '/user/getCurrentUserByToken';
+  const requestURL = '/user/me';
   try {
     const userData = yield call(request, requestURL);
     yield put(getCurrentUserSuccess(userData));

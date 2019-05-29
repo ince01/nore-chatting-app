@@ -57,6 +57,33 @@
   }
 }
 
+.list-find-people {
+  padding-top: 8px;
+
+  .item {
+    display: flex;
+    flex-direction: row;
+    padding: 8px 0px;
+
+    .name-avatar {
+      display: flex;
+      flex-direction: row;
+      flex: auto;
+
+      .avatar {
+        height: 36px;
+        width: 36px;
+        align-self: center;
+      }
+
+      .name {
+        margin-left: 10px;
+        align-self: center;
+      }
+    }
+  }
+}
+
 .title {
   align-self: center;
 }

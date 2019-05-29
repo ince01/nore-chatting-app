@@ -1,37 +1,17 @@
 import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import ReduxToastr from 'react-redux-toastr';
 import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
-import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import HomePage from '../HomePage/index';
-import RegisterPage from '../RegisterPage/Loadable';
-import ChatPage from '../ChatPage/index';
+import { indexRoutes, PublicRoutes, PrivateRoutes } from './routes';
 
 import AuthProvider from '../authProvider';
 import ControlProvider from '../ControlProvider';
+import DataProvider from '../dataProvider';
 
 import _ from 'lodash';
 import './style.scss';
 
-const isAuthenticated = () => {
-  const checker = window.localStorage.getItem('sessionToken');
-  if (checker) {
-    return true;
-  } else return false;
-}
-
-const PrivateRoute = ({ component: Component, ...rest }) => {
-  return (
-    <Route
-      {...rest}
-      render={(props) =>
-        isAuthenticated()
-          ? (<Component {...props} />)
-          : (<Redirect to={{ pathname: "/", state: { from: props.location } }} />)}
-    />
-  );
-}
 
 class App extends Component {
   constructor(props) {
@@ -53,11 +33,15 @@ class App extends Component {
         </Helmet>
         <AuthProvider />
         <ControlProvider />
+        <DataProvider />
         <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/register" component={RegisterPage} />
-          <PrivateRoute path="/chat" component={ChatPage} />
-          <Route path="" component={NotFoundPage} />
+          {indexRoutes.map((route, key) => {
+            if (!route.requireLogin) {
+              return <PublicRoutes path={route.path} component={route.component} key={key} />
+            } else {
+              return <PrivateRoutes path={route.path} component={route.component} key={key} />
+            }
+          })}
         </Switch>
         <ReduxToastr
           timeOut={2500}

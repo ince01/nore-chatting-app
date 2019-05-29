@@ -1,6 +1,6 @@
 import React, { Component, } from 'react';
 import { Avatar } from '../../../components/ComponentForms';
-import EmojiPicker from 'emoji-picker-react';
+// import EmojiPicker from 'emoji-picker-react';
 import 'emoji-picker-react/dist/universal/style.scss';
 import './style.scss';
 
@@ -20,7 +20,7 @@ class WindowChat extends Component {
             a
           </div>
           <div className="type-control">
-            {/* <EmojiPicker onEmojiClick={() => { }} /> */}
+            {/* <EmojiPicker preload onEmojiClick={(emoji, xx, yy) => { alert(emoji) }} /> */}
             <textarea rows="1" cols="50" style={{ height: "60px" }} placeholder="Type a message..." />
           </div>
 

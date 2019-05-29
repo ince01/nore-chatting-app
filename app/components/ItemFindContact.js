@@ -4,12 +4,12 @@ import './style.scss';
 
 class ItemContact extends Component {
   render() {
-    const { name } = this.props;
+    const { name, avatarUrl } = this.props;
     return (
       <>
         <div className="item" >
-          <Avatar />
-          <div className="name" > {name || "User Name"} </div>
+          <Avatar src={avatarUrl} />
+          <div className="name" >{name}</div>
         </div>
       </>
     )

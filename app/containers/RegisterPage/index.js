@@ -28,17 +28,15 @@ class RegisterPage extends Component {
   render() {
     const { initialValues } = this.state;
     return (
-      <article className="container">
+      <article className="register-page">
         <Helmet>
           <title>Register Page</title>
         </Helmet>
-        <div>
-          <RegisterForm
-            onSubmit={this.onSubmit}
-            initialValues={initialValues}
-            enableReinitialize={true}
-          />
-        </div>
+        <RegisterForm
+          onSubmit={this.onSubmit}
+          initialValues={initialValues}
+          enableReinitialize={true}
+        />
       </article>
     )
   }

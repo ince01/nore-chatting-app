@@ -1,0 +1,13 @@
+.input-find-people {
+  display: flex;
+  flex-direction: row;
+
+  .btn-find-people {
+    flex: initial;
+  }
+
+  input {
+    flex: auto;
+    margin-right: 8px;
+  }
+}

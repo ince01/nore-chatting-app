@@ -6,7 +6,7 @@ class TextField extends React.Component {
 
     return (
       <div className="text-field-container">
-        <div className="text-field-label">{label}</div>
+        {label && <div className="text-field-label">{label}</div>}
         <div className="input-group mb-3">
           <div className="input-field">
             <input {...input} placeholder={placeholder} type={type} className="form-control input-box" />
