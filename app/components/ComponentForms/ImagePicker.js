@@ -46,13 +46,13 @@ class ImagePicker extends React.Component {
     const { imageUrl } = this.state;
     return (
       <div className="image-picker">
-        <div className="image-preview" style={imageUrl ? { backgroundImage: `url(${imageUrl})` } : { backgroundImage: `url(https://img.icons8.com/cotton/36/000000/gender-neutral-user.png)`, backgroundSize: '60%' }} />
+        <div className="image-preview" style={imageUrl ? { backgroundImage: `url(${imageUrl})` } : { backgroundImage: `url(https://img.icons8.com/cotton/64/000000/person-male.png)` }} />
         <div className="control">
           <div className="image-picker-label-1">Profile picture</div>
           <div className="image-picker-label-2">(320px × 320px以上)</div>
           <button className="btn-pick-imgage" onClick={this.selectImage}>
             <img alt="upload-icon" src={uploadIcon} />
-            Choose image
+            Choose file
             </button>
           <input ref={this.fileUpload} id="fileUpload" type="file" className='display-none' onChange={(e) => this.handleSelectedImage(e)} />
         </div>

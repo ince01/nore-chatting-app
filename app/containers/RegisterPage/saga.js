@@ -5,31 +5,23 @@ import { registerSuccess, registerError } from './actions';
 import { toastr } from 'react-redux-toastr';
 import _ from 'lodash';
 import request from 'utils/request';
+import axios from 'axios';
+
 
 export function* handleRegister(action) {
-
   const requestURL = '/register';
-  const params = _.pick(action.data, ['email', 'password', 'fullName', 'gender']);
+  const params = _.pick(action.data, ['email', 'password', 'fullName', 'gender', 'birthday']);
 
   const avatar = _.get(action.data, 'avatar');
-  console.log(avatar)
-  // if (avatar && typeof avatar !== 'string') {
-  //   const payload = new FormData();
-  //   payload.append('type', 'AVATAR');
-  //   payload.append('file', avatar);
-
-  //   const uploadAvatar = yield Helper.uploadImage(payload);
-
-  //   const avatarId = _.get(uploadAvatar, 'data.objectId');
-  //   const avatarUrl = _.get(uploadAvatar, 'data.original.url');
-
-  //   if (avatarId && avatarUrl) {
-  //     _.set(params, 'avatarId', avatarId);
-  //     _.set(params, 'avatarUrl', avatarUrl)
-  //   }
-  // }
-
-  return
+  if (avatar && typeof avatar !== 'string') {
+    const payload = new FormData();
+    payload.append('file', avatar);
+    const fileUploaded = yield axios.post('http://localhost:5000/upload', payload);
+    const avatarUrl = fileUploaded.data.result.publicUrl;
+    if (avatarUrl) {
+      _.set(params, 'avatarUrl', avatarUrl)
+    }
+  }
 
   try {
     const resData = yield call(request, requestURL, params);

@@ -9,6 +9,7 @@ import reducer from './reducer';
 import { register } from './actions';
 import saga from './saga';
 import RegisterForm from './RegisterForm';
+import background from 'images/background.png';
 
 class RegisterPage extends Component {
   constructor(props) {
@@ -20,7 +21,7 @@ class RegisterPage extends Component {
 
   onSubmit = (value) => {
     if (this.props.invalid) {
-      return
+      return;
     }
     this.props.onSubmitForm(value.toJS());
   }
@@ -28,16 +29,26 @@ class RegisterPage extends Component {
   render() {
     const { initialValues } = this.state;
     return (
-      <article className="register-page">
+      <>
         <Helmet>
           <title>Register Page</title>
         </Helmet>
-        <RegisterForm
-          onSubmit={this.onSubmit}
-          initialValues={initialValues}
-          enableReinitialize={true}
-        />
-      </article>
+        <div className="register-page">
+          <div className="register-container">
+            <div className="register-page-header">
+              <h1 className="title">Sign up</h1>
+              <div className="desc">Get started with a free account</div>
+            </div>
+            <RegisterForm
+              onSubmit={this.onSubmit}
+              initialValues={initialValues}
+              enableReinitialize={true}
+            />
+          </div>
+
+          <div className="background-right" style={{ backgroundImage: `url(${background})` }} />
+        </div>
+      </>
     )
   }
 }
