@@ -1,110 +1,86 @@
 .list-contact {
+  display: flex;
+  flex-direction: column;
+
+  .item:hover {
+    background-color: #dcf1fa;
+  }
+
+  .item {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    padding: 8px;
+    cursor: pointer;
 
-    .item {
-        display: flex;
-        flex-direction: row;
-        padding: 8px;
-
-        .avatar {
-            height: 36px;
-            width: 36px;
-        }
-
-        .name {
-            margin-left: 10px;
-            align-self: center;
-        }
-    }
-}
-
-.list-chat {
-    display: flex;
-    flex-direction: column;
-
-    .item:hover {
-        background-color: #DCF1FA;
+    &.active {
+      background-color: #c7edfc;
     }
 
-    .item {
-        display: flex;
-        flex-direction: row;
-        padding: 8px;
-        cursor: pointer;
+    .avatar {
+      display: flex;
 
-        &.active {
-            background-color: #C7EDFC;
-        }
-
-        .avatar {
-            display: flex;
-
-            img {
-                height: 36px;
-                width: 36px;
-                align-self: center;
-            }
-        }
-
-        .item-info {
-            display: flex;
-            flex-direction: column;
-            margin-left: 10px;
-            flex-basis: 180px;
-
-            .name {
-                font-size: 16px;
-            }
-
-            .content {
-                font-size: 12px;
-            }
-        }
-
-        .item-descr {
-            margin-left: 8px;
-            font-size: 12px;
-        }
+      img {
+        height: 36px;
+        width: 36px;
+        align-self: center;
+      }
     }
+
+    .name {
+      font-size: 15px;
+      margin-left: 15px;
+      align-self: center;
+    }
+  }
 }
 
 .list-find-people {
-    padding-top: 8px;
 
-    .item {
-        display: flex;
-        flex-direction: row;
-        padding: 8px 0px;
+  .item {
+    display: flex;
+    flex-direction: row;
+    padding: 8px 0px;
 
-        .name-avatar {
-            display: flex;
-            flex-direction: row;
-            flex: auto;
+    .name-avatar {
+      display: flex;
+      flex-direction: row;
+      flex: auto;
 
-            .avatar {
-                height: 36px;
-                width: 36px;
-                align-self: center;
-            }
-
-            .name {
-                margin-left: 10px;
-                align-self: center;
-            }
+      .avatar {
+        height: 36px;
+        width: 36px;
+        align-self: center;
+        img{
+            width: 100%;
+            height: 100%;
         }
+      }
+
+      .name {
+        margin-left: 10px;
+        align-self: center;
+      }
     }
+  }
 }
 
-.title {
+.welcome-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 2;
+
+  .title {
     align-self: center;
-}
+    font-size: 60px;
+  }
 
-.avatar-welcome-page {
+  .avatar-welcome-page {
     align-self: center;
 
     img {
-        height: 120px;
-        width: 120px;
+      height: 120px;
+      width: 120px;
     }
+  }
 }

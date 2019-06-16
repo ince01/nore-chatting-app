@@ -6,7 +6,7 @@ export default class API {
   constructor(_options = {}) {
     if (!this.axios) {
       this.axios = axios.create({
-        baseURL: (process.env.REACT_APP_PUBLIC_SERVER_URL || 'http://172.16.0.67:5000'),
+        baseURL: (process.env.REACT_APP_PUBLIC_SERVER_URL || 'http://localhost:5000'),
         responseType: 'json'
       });
       this.axios.defaults.params = {};

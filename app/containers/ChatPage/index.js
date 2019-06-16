@@ -23,7 +23,7 @@ class ChatPage extends Component {
 
   callAPI() {
     const instance = axios.create({
-      baseURL: 'http://172.16.0.67:5000',
+      baseURL: 'http://localhost:5000',
       responseType: 'json'
     });
     let sessionToken = localStorage.getItem('sessionToken');
@@ -32,7 +32,7 @@ class ChatPage extends Component {
   }
 
   componentDidMount() {
-    this.socket = io('172.16.0.67:5000?token=' + localStorage.getItem('sessionToken'));
+    this.socket = io('http://localhost:5000?token=' + localStorage.getItem('sessionToken'));
     const app = this;
     this.socket.on('MESS', function (data) {
       app.addMessage(data);
@@ -155,7 +155,7 @@ class ChatPage extends Component {
         <div className="main-content">
           {
             this.state.idFriendCurrent === -1 ?
-              <WelcomePage /> :
+              <WelcomePage fullName={currentUser.fullName} avatarUrl={currentUser.avatarUrl} /> :
               <WindowChat idFriendCurrent={this.state.idFriendCurrent} mess={this.state.mess[this.state.idFriendCurrent]} sendMess={(mess) => this.sendMess(mess)} />
           }
 

@@ -5,10 +5,12 @@ import './style.scss';
 class WelcomePage extends Component {
   render() {
     return (
-      <>
-        <h1 className="title" >Welcome, User Name</h1>
-        <Avatar className="avatar-welcome-page" />
-      </>
+      <div className="welcome-page" >
+        <h1 className="title" >{`Welcome, ${this.props.fullName}`}</h1>
+        <div className="avatar-welcome-page">
+          <Avatar src={this.props.avatarUrl} />
+        </div>
+      </div>
     )
   }
 }

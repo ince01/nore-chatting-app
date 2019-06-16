@@ -6,8 +6,12 @@
     flex: initial;
   }
 
-  input {
+  .input-search {
     flex: auto;
     margin-right: 8px;
+
+    .input-field {
+      width: 100%;
+    }
   }
 }

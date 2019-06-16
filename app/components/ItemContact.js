@@ -4,12 +4,12 @@ import './style.scss';
 
 class ItemContact extends Component {
   render() {
-    const { name } = this.props;
+    const { fullName, avatarUrl } = this.props.user;
     return (
       <>
-        <div className="item" >
-          <Avatar />
-          <div className="name" > {name || "User Name"} </div>
+        <div className={this.props.active ? "active item" : "item"} onClick={this.props.onClick} >
+          <Avatar src={avatarUrl} />
+          <div className="name" > {fullName} </div>
         </div>
       </>
     )
