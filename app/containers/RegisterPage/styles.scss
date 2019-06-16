@@ -1,46 +1,71 @@
 .register-page {
-  display: flex;
-  flex-direction: row;
-  height: 100%;
-  width: 100%;
-
-  .background-right {
-    width: 40%;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 100%;
-  }
-
-  .register-container {
-    flex: 1;
-    width: 60%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
 
-    .register-page-header {
-      width: 100%;
-      border-bottom: solid 1px #dddddd;
-      .title {
-        text-align: center;
-      }
-      .desc {
-        text-align: center;
-        margin-bottom: 16px;
-      }
+    .background-right {
+        width: 40%;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 100%;
     }
 
-    .register-form {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      height: 100%;
-      padding: 34px 34px;
-
-      .form-fields {
+    .register-container {
+        flex: 1;
+        width: 60%;
         display: flex;
-        flex-direction: row;
-        justify-content: center;
-      }
+        flex-direction: column;
+
+        .register-page-header {
+            width: 100%;
+            border-bottom: solid 1px #dddddd;
+
+            .title {
+                text-align: center;
+            }
+
+            .desc {
+                text-align: center;
+                margin-bottom: 16px;
+            }
+        }
+
+        .register-form {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            padding: 34px 34px;
+
+            .action-container {
+                display: flex;
+                justify-content: center;
+            }
+
+            .image-picker {
+                margin-bottom: 20px;
+            }
+
+            .form-fields {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                margin-bottom: 20px;
+
+                .form-rows {
+                    flex: auto;
+                    display: flex;
+                    flex-direction: column;
+
+                    .gender {
+                        margin-top: 20px;
+                    }
+                }
+
+                .gap-30 {
+                    width: 30px;
+                }
+            }
+        }
     }
-  }
 }

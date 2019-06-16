@@ -12,10 +12,14 @@ class RegisterForm extends Component {
     const { handleSubmit } = this.props;
     return (
       <form onSubmit={handleSubmit} className="register-form">
-        <Field
-          name='avatar'
-          component={ImagePicker}
-        />
+
+        <div className='image-picker'>
+          <Field
+            name='avatar'
+            component={ImagePicker}
+          />
+        </div>
+
         <div className="form-fields">
           <div className="form-rows">
             <Field
@@ -40,6 +44,7 @@ class RegisterForm extends Component {
             />
 
           </div>
+          <div className='gap-30'></div>
           <div className="form-rows">
             <Field
               name="fullName"
@@ -53,14 +58,18 @@ class RegisterForm extends Component {
               component={DatePicker}
               label="Birthday"
             />
-            <Field
-              name="gender"
-              component={RadioFields}
-              label="Gender"
-              options={['Men', 'Women', 'Other']}
-              type="string"
-              placeholder="Full Name"
-            />
+            <div className='gender'>
+              <Field
+                name="gender"
+                component={RadioFields}
+                label="Gender"
+                options={['Men', 'Women', 'Other']}
+                type="string"
+                placeholder="Full Name"
+              />
+            </div>
+
+
           </div>
         </div>
         <Button
@@ -70,6 +79,7 @@ class RegisterForm extends Component {
         >
           Register
           </Button>
+
       </form>
     )
   }
