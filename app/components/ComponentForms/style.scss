@@ -1,39 +1,57 @@
 .image-picker {
-  display: flex;
-  flex-direction: row;
-
-  .control {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    margin-left: 16px;
+    flex-direction: row;
 
-    .display-none {
-      display: none;
-    }
-    .btn-pick-imgage {
-      margin-top: 16px;
-      width: 160px;
-      height: 40px;
-      border: solid 1px #dddddd;
-      background-color: #ffffff;
-      border-radius: 0;
-      font-size: 14px;
-      font-weight: 500;
-      img {
-        width: 24px;
-        height: 24px;
-        margin-right: 5px;
-      }
-    }
-  }
+    .control {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        margin-left: 16px;
 
-  .image-preview {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background-position: center;
-    background-size: cover;
-    border: 1px solid #dddddd;
-  }
+        .display-none {
+            display: none;
+        }
+
+        .btn-pick-imgage {
+            margin-top: 16px;
+            width: 160px;
+            height: 40px;
+            border: solid 1px #dddddd;
+            background-color: #ffffff;
+            border-radius: 0;
+            font-size: 14px;
+            font-weight: 500;
+
+            img {
+                width: 24px;
+                height: 24px;
+                margin-right: 5px;
+            }
+        }
+    }
+
+    .image-preview {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background-position: center;
+        background-size: cover;
+        border: 1px solid #dddddd;
+    }
+}
+
+.text-field-container {
+    flex: auto;
+
+    .input-group {
+        flex: auto;
+
+        .input-field {
+            flex: auto;
+
+            input {
+                flex: auto;
+            }
+        }
+    }
 }
