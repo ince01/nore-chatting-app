@@ -42,6 +42,7 @@ class PopupAddFriend extends Component {
                     key={index}
                     name={user.fullName}
                     id={user._id}
+                    avatarUrl={user.avatarUrl}
                     relationshipStatus={user.relationshipStatus}
                     handleAddFriend={() => { handleAddFriend(user) }}
                     handleConfirm={() => { handleConfirm(user) }}

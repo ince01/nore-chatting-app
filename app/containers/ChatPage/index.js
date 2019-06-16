@@ -189,7 +189,7 @@ class ChatPage extends Component {
         <div className="main-content">
           {
             this.state.idFriendCurrent === -1 ?
-              <WelcomePage /> :
+              <WelcomePage fullName={currentUser.fullName} avatarUrl={currentUser.avatarUrl} /> :
               <WindowChat idFriendCurrent={this.state.idFriendCurrent} mess={this.state.mess[this.state.idFriendCurrent]} sendMess={(mess) => this.sendMess(mess)} />
           }
 

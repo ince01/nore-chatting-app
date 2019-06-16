@@ -10,7 +10,7 @@ import { ItemChat, ItemContact } from '../../../components';
 import iconAddFr from 'images/add-friend.svg';
 import SearchForm from './SearchForm';
 import PopupAddFriend from './popupAddFriend';
-import { TAB_CHAT, TAB_CONTACT } from 'utils/constants';
+import { TAB_NOTIFICATION, TAB_CONTACT } from 'utils/constants';
 import _ from 'lodash';
 import { Button } from 'react-bootstrap';
 import './style.scss';
@@ -51,8 +51,9 @@ class SideBarNav extends Component {
     }
     this.fileUpload = React.createRef();
   }
-  selectTabChat = () => {
-    this.props.onChangeTab(TAB_CHAT);
+
+  selectTabNotification = () => {
+    this.props.onChangeTab(TAB_NOTIFICATION);
   }
 
   selectTabContact = () => {
@@ -198,19 +199,18 @@ class SideBarNav extends Component {
             <SearchForm />
           </div> */}
           <div className="tab-bar" >
-
             <div className="contact" onClick={this.selectTabContact}>
               <img src="https://img.icons8.com/ultraviolet/20/000000/contacts.png" />
               <div className="descr" > Contact </div>
             </div>
-            <div className="chat" onClick={this.selectTabChat} >
-              <img src="https://img.icons8.com/office/20/000000/speech-bubble.png" />
-              <div className="descr" > Chat </div>
+            <div className="chat" onClick={this.selectTabNotification} >
+              <img src="https://img.icons8.com/ultraviolet/40/000000/appointment-reminders.png" />
+              <div className="descr" > Notification </div>
             </div>
           </div>
         </div>
         {
-          navTabStatus === TAB_CHAT &&
+          navTabStatus === TAB_NOTIFICATION &&
           <div className="list-chat" >
             {this.props.listFriendRequest.map(i => {
               return this.ItemUserContact(i);
@@ -219,9 +219,9 @@ class SideBarNav extends Component {
         }
         {
           navTabStatus === TAB_CONTACT &&
-          <div className="list-chat" >
+          <div className="list-contact" >
             {!_.isEmpty(friends) && friends.map((i, index) => {
-              return <ItemChat active={i._id === this.props.idFriendCurrent} key={index} user={i} onClick={() => { this.props.onChangeUserChatting(i) }} />
+              return <ItemContact active={i._id === this.props.idFriendCurrent} key={index} user={i} onClick={() => { this.props.onChangeUserChatting(i) }} />
             })}
           </div>
         }

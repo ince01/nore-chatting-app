@@ -1,5 +1,5 @@
 import { fromJS } from 'immutable';
-import { TAB_CHAT } from 'utils/constants';
+import { TAB_CONTACT } from 'utils/constants';
 
 import {
   ON_CHANGE_TAB,
@@ -7,7 +7,7 @@ import {
 } from './constants';
 
 const initialState = fromJS({
-  navTabStatus: TAB_CHAT,
+  navTabStatus: TAB_CONTACT,
   isOpenPopupAddFr: false,
 });
 
