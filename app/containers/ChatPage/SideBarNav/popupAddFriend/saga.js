@@ -26,8 +26,6 @@ export function* handleConfirmAddFriend(action) {
   const requestURL = '/user/acceptFriend';
   const params = { friendRequestId: action.data };
 
-  console.log(params)
-
   try {
     const data = yield call(request, requestURL, params);
     yield put(confirmSuccess(data));

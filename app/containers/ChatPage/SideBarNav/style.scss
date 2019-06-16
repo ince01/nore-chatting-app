@@ -1,93 +1,128 @@
 .side-bar-nav {
-  border-right: 1px solid #d5d9de;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 0;
-  // width: 20%;
-  min-width: 312px;
-  height: 100%;
-  background-color: #f0f4f8;
+    border-right: 1px solid #d5d9de;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 0;
+    // width: 20%;
+    min-width: 312px;
+    height: 100%;
+    background-color: #f0f4f8;
+    max-width: 312px;
 
-  .control {
-    height: fit-content;
-    border-bottom: 1px solid #d5d9de;
+    .control {
+        height: fit-content;
+        border-bottom: 1px solid #d5d9de;
 
-    .user-info {
-      display: flex;
-      flex-direction: row;
-      padding: 8px;
+        .user-info {
+            display: flex;
+            flex-direction: row;
+            padding: 8px;
 
-      .avatar {
-        img {
-          height: 36px;
-          width: 36px;
+            .avatar {
+                img {
+                    height: 36px;
+                    width: 36px;
+                }
+            }
+
+            .icon-add-fr {
+                height: 25px;
+                width: 25px;
+                align-self: center;
+                margin-right: 10px;
+            }
+
+            .user-name {
+                margin-left: 15px;
+                align-self: center;
+                font-size: 15px;
+                flex-basis: 300px;
+            }
         }
-      }
 
-      .icon-add-fr {
-        height: 25px;
-        width: 25px;
-        align-self: center;
-        margin-right: 10px;
-      }
+        .search-field {
+            display: flex;
+            justify-content: center;
+            padding: 8px;
 
-      .user-name {
-        margin-left: 15px;
-        align-self: center;
-        font-size: 15px;
-        flex-basis: 300px;
-      }
-    }
+            form {
+                width: 100%;
 
-    .search-field {
-      display: flex;
-      justify-content: center;
-      padding: 8px;
+                .text-field-container {
+                    width: 100%;
 
-      form {
-        width: 100%;
-        .text-field-container {
-          width: 100%;
+                    .mb-3 {
+                        margin: 0px !important;
+                    }
 
-          .mb-3 {
-            margin: 0px !important;
-          }
-
-          .input-field {
-            width: 100%;
-          }
+                    .input-field {
+                        width: 100%;
+                    }
+                }
+            }
         }
-      }
+
+        .tab-bar {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            padding: 8px;
+
+            .chat {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: 80px;
+            }
+
+            .contact {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: 80px;
+            }
+
+            img {
+                height: 20px;
+                width: 20px;
+                align-self: center;
+            }
+
+            .descr {
+                align-self: center;
+            }
+        }
+    }
+}
+
+.item-user-contact:hover {
+    background-color: #DCF1FA;
+}
+
+.item-user-contact {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px;
+
+    .name {
+        word-break: break-word;
     }
 
-    .tab-bar {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-around;
-      padding: 8px;
-
-      .chat {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 80px;
-      }
-
-      .contact {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 80px;
-      }
-
-      img {
-        height: 20px;
-        width: 20px;
-        align-self: center;
-      }
-      .descr {
-        align-self: center;
-      }
+    img {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
     }
-  }
+
+    Button {
+        width: 92px;
+    }
+
+    .item-info {
+        margin-left: 10px;
+        flex: auto;
+        display: flex;
+        align-items: center;
+    }
 }
