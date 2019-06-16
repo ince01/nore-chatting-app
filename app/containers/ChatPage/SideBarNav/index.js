@@ -131,8 +131,12 @@ class SideBarNav extends Component {
     return (
       <div className="side-bar-nav">
         <div className="control">
-          <div tabIndex={0} className="user-info" onBlur={() => { this.setState({ isViewDetailEdit: false }) }} onClick={() => { const isViewDetailEdit = this.state.isViewDetailEdit; this.setState({ isViewDetailEdit: !isViewDetailEdit }) }} >
-            <Avatar src={avatarUrl} />
+          <div className="user-info"  >
+            <div className='view-click-avatar' tabIndex={0} onBlur={() => { this.setState({ isViewDetailEdit: false }) }} onClick={() => { const isViewDetailEdit = this.state.isViewDetailEdit; this.setState({ isViewDetailEdit: !isViewDetailEdit }) }}>
+              <Avatar src={avatarUrl} />
+              {this.state.isViewDetailEdit && this.viewDetailEdit()}
+            </div>
+
             <div className="user-name" >{fullName}</div>
             <img className="icon-add-fr" src={iconAddFr} onClick={this.onClickAddFr} />
             <PopupAddFriend
@@ -140,7 +144,6 @@ class SideBarNav extends Component {
               handleConfirm={(user) => { this.props.accectFriend(user) }}
               handleAddFriend={(user) => { this.props.handleAddFriend(user) }}
             />
-            {this.state.isViewDetailEdit && this.viewDetailEdit()}
           </div>
 
           <Dialog open={this.state.isViewEditProfile} onClose={() => { this.setState({ isViewEditProfile: false }) }} aria-labelledby="form-dialog-title">

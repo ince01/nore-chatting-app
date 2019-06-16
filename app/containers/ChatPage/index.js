@@ -127,16 +127,28 @@ class ChatPage extends Component {
 
   addMessage(data) {
     let mess = this.state.mess;
-    if (!mess[data.id]) {
-      mess[data.id] = [];
-    }
-    if (mess[data.id] && mess[data.id].length > 0) {
+    if (this.state.idFriendCurrent === data.id) {
+      if (!mess[data.id]) {
+        mess[data.id] = [];
+      }
       mess[data.id].push({
         type: data.type,
         value: data.mess
       })
       this.setState({ mess: mess });
+    } else {
+      if (!mess[data.id]) {
+        mess[data.id] = [];
+      }
+      if (mess[data.id] && mess[data.id].length > 0) {
+        mess[data.id].push({
+          type: data.type,
+          value: data.mess
+        })
+        this.setState({ mess: mess });
+      }
     }
+
   };
 
   updateUser(user) {
@@ -188,7 +200,7 @@ class ChatPage extends Component {
         />
         <div className="main-content">
           {
-            this.state.idFriendCurrent === -1 ?
+            this.state.idFriendCurrent === -1 || !currentUser || !currentUser.friends ?
               <WelcomePage fullName={currentUser.fullName} avatarUrl={currentUser.avatarUrl} /> :
               <WindowChat idFriendCurrent={this.state.idFriendCurrent} mess={this.state.mess[this.state.idFriendCurrent]} sendMess={(mess) => this.sendMess(mess)} />
           }
