@@ -23,7 +23,7 @@ class ChatPage extends Component {
 
   callAPI() {
     const instance = axios.create({
-      baseURL: 'http://172.16.0.67:5000',
+      baseURL: 'http://localhost:5000',
       responseType: 'json'
     });
     let sessionToken = localStorage.getItem('sessionToken');
@@ -32,7 +32,7 @@ class ChatPage extends Component {
   }
 
   componentDidMount() {
-    this.socket = io('172.16.0.67:5000?token=' + localStorage.getItem('sessionToken'));
+    this.socket = io('localhost:5000?token=' + localStorage.getItem('sessionToken'));
     const app = this;
     this.socket.on('MESS', function (data) {
       app.addMessage(data);
@@ -126,7 +126,6 @@ class ChatPage extends Component {
   }
 
   addMessage(data) {
-    console.log(data);
     let mess = this.state.mess;
     if (!mess[data.id]) {
       mess[data.id] = [];
@@ -140,6 +139,40 @@ class ChatPage extends Component {
     }
   };
 
+  updateUser(user) {
+    const app = this;
+    if (user.fileAvatar) {
+      const payload = new FormData();
+      payload.append('file', user.fileAvatar);
+      this.callAPI().post('upload', payload)
+        .then(function (response) {
+          user.avatarUrl = response.data.result.publicUrl;
+          app.callAPIUpdateUser(user);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    } else {
+      this.callAPIUpdateUser(user);
+    }
+  }
+
+  callAPIUpdateUser(user) {
+    const app = this;
+    this.callAPI().post('/user/update', {
+      fullName: user.fullName,
+      birthday: user.birthday,
+      gender: user.gender,
+      avatarUrl: user.avatarUrl
+    })
+      .then(function (response) {
+        app.props.getCurrentUser();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
   render() {
     const currentUser = _.get(this.props, "currentUser");
     return (
@@ -151,6 +184,7 @@ class ChatPage extends Component {
           accectFriend={(user) => { this.accectFriend(user) }}
           handleAddFriend={(user) => { this.handleAddFriend(user) }}
           onChangeUserChatting={(user) => this.onChangeUserChatting(user)}
+          updateUser={(user) => this.updateUser(user)}
         />
         <div className="main-content">
           {

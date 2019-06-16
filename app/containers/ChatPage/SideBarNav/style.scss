@@ -12,11 +12,14 @@
     .control {
         height: fit-content;
         border-bottom: 1px solid #d5d9de;
+        position: relative;
 
         .user-info {
             display: flex;
             flex-direction: row;
             padding: 8px;
+            cursor: pointer;
+            outline: none;
 
             .avatar {
                 img {
@@ -125,4 +128,45 @@
         display: flex;
         align-items: center;
     }
+}
+
+.view-detail-edit-container {
+    position: absolute;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 4px 0 rgba(0, 0, 0, 0.25) !important;
+    background-color: white;
+    top: 50px;
+    left: 10px;
+    padding: 10px;
+
+    .item {
+        cursor: pointer;
+    }
+
+    .detail-user {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+
+        hr {
+            margin: 10px 0px;
+        }
+
+        img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+        }
+
+        .name-email {
+            margin-left: 10px;
+
+            .name {
+                font-size: 20px;
+                font-weight: 600;
+            }
+        }
+    }
+
 }

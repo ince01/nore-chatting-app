@@ -5,6 +5,7 @@ import { TextFields, RadioFields, ImagePicker, DatePicker } from '../../componen
 import { Button } from '@material-ui/core'
 import validate from './validate';
 import './styles.scss';
+import uploadIcon from 'images/icons8-upload-64.png';
 
 class RegisterForm extends Component {
   render() {
