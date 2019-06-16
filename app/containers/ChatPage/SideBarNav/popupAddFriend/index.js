@@ -24,10 +24,6 @@ class PopupAddFriend extends Component {
     this.props.onSubmitForm(value);
   }
 
-  // handleAddFriend = (user) => {
-  //   console.log(user._id)
-  // }
-
   render() {
     const { show, onHide, listFindPeople, handleAddFriend, handleConfirm } = this.props;
     return (
@@ -41,15 +37,14 @@ class PopupAddFriend extends Component {
             !_.isEmpty(listFindPeople) &&
             <div className="list-find-people">
               {listFindPeople.map((user, index) => {
-                console.log(user.relationshipStatus)
                 return (
                   <ItemPeople
                     key={index}
                     name={user.fullName}
                     id={user._id}
                     relationshipStatus={user.relationshipStatus}
-                    handleAddFriend={() => { handleAddFriend(user._id) }}
-                    handleConfirm={() => { handleConfirm(user.relationshipStatus.from) }}
+                    handleAddFriend={() => { handleAddFriend(user) }}
+                    handleConfirm={() => { handleConfirm(user) }}
                   />
                 )
               })}
@@ -66,7 +61,7 @@ PopupAddFriend.propTypes = {
   onHide: PropTypes.func,
   onSubmitForm: PropTypes.func,
   listFindPeople: PropTypes.array,
-  handleAddFriend: PropTypes.func,
+  // handleAddFriend: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -77,8 +72,8 @@ const mapStateToProps = createStructuredSelector({
 const mapDispatchToProps = (dispatch) => ({
   onSubmitForm: (data) => dispatch(findPeople(data.toJS())),
   onHide: () => dispatch(closePopupAddFr()),
-  handleAddFriend: (data) => dispatch(addFriend(data)),
-  handleConfirm: (data) => dispatch(confirm(data)),
+  // handleAddFriend: (data) => dispatch(addFriend(data)),
+  // handleConfirm: (data) => dispatch(confirm(data)),
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

@@ -1,97 +1,110 @@
 .list-contact {
-  display: flex;
-  flex-direction: column;
-
-  .item {
     display: flex;
-    flex-direction: row;
-    padding: 8px;
+    flex-direction: column;
 
-    .avatar {
-      height: 36px;
-      width: 36px;
+    .item {
+        display: flex;
+        flex-direction: row;
+        padding: 8px;
+
+        .avatar {
+            height: 36px;
+            width: 36px;
+        }
+
+        .name {
+            margin-left: 10px;
+            align-self: center;
+        }
     }
-    .name {
-      margin-left: 10px;
-      align-self: center;
-    }
-  }
 }
 
 .list-chat {
-  display: flex;
-  flex-direction: column;
-
-  .item {
     display: flex;
-    flex-direction: row;
-    padding: 8px;
+    flex-direction: column;
 
-    .avatar {
-      display: flex;
-      img {
-        height: 36px;
-        width: 36px;
-        align-self: center;
-      }
+    .item:hover {
+        background-color: #DCF1FA;
     }
 
-    .item-info {
-      display: flex;
-      flex-direction: column;
-      margin-left: 10px;
-      flex-basis: 180px;
+    .item {
+        display: flex;
+        flex-direction: row;
+        padding: 8px;
+        cursor: pointer;
 
-      .name {
-        font-size: 16px;
-      }
-      .content {
-        font-size: 12px;
-      }
-    }
+        &.active {
+            background-color: #C7EDFC;
+        }
 
-    .item-descr {
-      margin-left: 8px;
-      font-size: 12px;
+        .avatar {
+            display: flex;
+
+            img {
+                height: 36px;
+                width: 36px;
+                align-self: center;
+            }
+        }
+
+        .item-info {
+            display: flex;
+            flex-direction: column;
+            margin-left: 10px;
+            flex-basis: 180px;
+
+            .name {
+                font-size: 16px;
+            }
+
+            .content {
+                font-size: 12px;
+            }
+        }
+
+        .item-descr {
+            margin-left: 8px;
+            font-size: 12px;
+        }
     }
-  }
 }
 
 .list-find-people {
-  padding-top: 8px;
+    padding-top: 8px;
 
-  .item {
-    display: flex;
-    flex-direction: row;
-    padding: 8px 0px;
+    .item {
+        display: flex;
+        flex-direction: row;
+        padding: 8px 0px;
 
-    .name-avatar {
-      display: flex;
-      flex-direction: row;
-      flex: auto;
+        .name-avatar {
+            display: flex;
+            flex-direction: row;
+            flex: auto;
 
-      .avatar {
-        height: 36px;
-        width: 36px;
-        align-self: center;
-      }
+            .avatar {
+                height: 36px;
+                width: 36px;
+                align-self: center;
+            }
 
-      .name {
-        margin-left: 10px;
-        align-self: center;
-      }
+            .name {
+                margin-left: 10px;
+                align-self: center;
+            }
+        }
     }
-  }
 }
 
 .title {
-  align-self: center;
+    align-self: center;
 }
 
 .avatar-welcome-page {
-  align-self: center;
-  img {
-    height: 120px;
-    width: 120px;
-  }
+    align-self: center;
+
+    img {
+        height: 120px;
+        width: 120px;
+    }
 }

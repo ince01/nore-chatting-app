@@ -14,8 +14,6 @@ class ItemPeople extends Component {
       handleConfirm
     } = this.props;
 
-    console.log(relationshipStatus)
-
     return (
       <div className="item" >
         <div className="name-avatar">
