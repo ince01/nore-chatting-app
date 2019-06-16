@@ -32,8 +32,6 @@ class SideBarNav extends Component {
     const { navTabStatus } = this.props;
     const { fullName, avatarUrl, friends } = this.props.currentUser;
 
-    console.log(friends);
-
     return (
       <div className="side-bar-nav">
         <div className="control">
@@ -62,7 +60,9 @@ class SideBarNav extends Component {
         {
           navTabStatus === TAB_CHAT &&
           <div className="list-chat" >
-            <ItemChat />
+            {friends.map((i, index) => {
+              return <ItemChat active={index === this.props.indexUserCurrent} key={index} user={i} onClick={() => { this.props.onChangeUserChatting(index) }} />
+            })}
           </div>
         }
         {
@@ -81,7 +81,7 @@ class SideBarNav extends Component {
 }
 
 SideBarNav.propTypes = {
-  navTabStatus: PropTypes.bool.isRequired,
+  navTabStatus: PropTypes.string.isRequired,
   currentUser: PropTypes.object.isRequired,
   onChangeTab: PropTypes.func,
   openPopupAddFr: PropTypes.func,

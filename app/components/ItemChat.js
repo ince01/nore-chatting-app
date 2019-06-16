@@ -6,10 +6,10 @@ class ItemChat extends Component {
   render() {
     return (
       <>
-        <div className="item" >
-          <Avatar />
+        <div className={this.props.active ? "active item" : "item"} onClick={this.props.onClick}>
+          <Avatar src={this.props.user.avatarUrl} />
           <div className="item-info" >
-            <div className="name" > User Name </div>
+            <div className="name" > {this.props.user.fullName} </div>
             <div className="content" > the last message </div>
           </div>
           <div className="item-descr" >3/38/2019</div>
