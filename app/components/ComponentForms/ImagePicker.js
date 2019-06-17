@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import uploadIcon from 'images/icons8-upload-64.png';
+import preview from 'images/icons8-contacts.svg';
 import './style.scss';
 import _ from 'lodash';
 
@@ -46,7 +47,7 @@ class ImagePicker extends React.Component {
     const { imageUrl } = this.state;
     return (
       <div className="image-picker">
-        <div className="image-preview" style={imageUrl ? { backgroundImage: `url(${imageUrl})` } : { backgroundImage: `url(https://img.icons8.com/cotton/64/000000/person-male.png)` }} />
+        <div className="image-preview" style={imageUrl ? { backgroundImage: `url(${imageUrl})` } : { backgroundImage: `url(${preview})` }} />
         <div className="control">
           <div className="image-picker-label-1">Profile picture</div>
           <div className="image-picker-label-2">(320px × 320px以上)</div>

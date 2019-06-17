@@ -23,16 +23,18 @@ class ChatPage extends Component {
 
   callAPI() {
     const instance = axios.create({
-      baseURL: 'http://localhost:5000',
+      baseURL: process.env.REACT_APP_PUBLIC_SERVER_URL || 'http://localhost:5000',
       responseType: 'json'
     });
-    let sessionToken = localStorage.getItem('sessionToken');
+    let sessionToken = localStorage.getItem('sessionToken') || sessionStorage.getItem('sessionToken');
     instance.defaults.headers.common['Authorization'] = `jwt ${sessionToken}`;
     return instance;
   }
 
   componentDidMount() {
-    this.socket = io('localhost:5000?token=' + localStorage.getItem('sessionToken'));
+    let sessionToken = localStorage.getItem('sessionToken') || sessionStorage.getItem('sessionToken');
+    const baseURL = process.env.REACT_APP_PUBLIC_SERVER_URL || 'http://localhost:5000';
+    this.socket = io(`${baseURL}?token=${sessionToken}`);
     const app = this;
     this.socket.on('MESS', function (data) {
       app.addMessage(data);

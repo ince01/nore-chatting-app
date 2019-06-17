@@ -33,6 +33,7 @@ class RegisterPage extends Component {
         <Helmet>
           <title>Register Page</title>
         </Helmet>
+
         <div className="register-page">
           <div className="register-container">
             <div className="register-page-header">
@@ -45,7 +46,6 @@ class RegisterPage extends Component {
               enableReinitialize={true}
             />
           </div>
-
           <div className="background-right" style={{ backgroundImage: `url(${background})` }} />
         </div>
       </>
@@ -56,6 +56,10 @@ class RegisterPage extends Component {
 RegisterPage.propTypes = {
   onSubmitForm: PropTypes.func.isRequired,
 };
+
+// const mapStateToProps = (state) => {
+//   isLoading: state.
+// }
 
 const mapDispatchToProps = (dispatch) => ({
   onSubmitForm: (value) => dispatch(register(value))

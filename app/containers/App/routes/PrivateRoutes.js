@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 class PrivateRoutes extends React.Component {
   render() {
     const { component, path } = this.props;
-    const authToken = localStorage.getItem('sessionToken');
+    const authToken = localStorage.getItem('sessionToken') || sessionStorage.getItem('sessionToken');
     if (authToken) {
       return <Route path={path} component={component} />
     } else {

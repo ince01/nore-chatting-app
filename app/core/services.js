@@ -5,6 +5,8 @@ import _ from 'lodash';
 export default class API {
   constructor(_options = {}) {
     if (!this.axios) {
+
+      console.log(process.env)
       this.axios = axios.create({
         baseURL: (process.env.REACT_APP_PUBLIC_SERVER_URL || 'http://localhost:5000'),
         responseType: 'json'
@@ -15,14 +17,14 @@ export default class API {
   }
 
   post(action, params) {
-    let sessionToken = localStorage.getItem('sessionToken');
+    let sessionToken = localStorage.getItem('sessionToken') || sessionStorage.getItem('sessionToken');
 
     const publicActions = ['/register', '/login'];
 
     if (publicActions.indexOf(action) === -1 && _.isNull(sessionToken)) {
       return Promise.resolve(true);
     } else if (action === 'logout') {
-      localStorage.setItem('logout', Date.now())
+      localStorage.setItem('logout', Date.now());
     }
 
     if (_.isString(sessionToken) && !_.isNull(sessionToken)) {
@@ -41,9 +43,12 @@ export default class API {
 
           const { sucess, result, sessionToken } = response.data;
           if (sucess && result && sessionToken) {
-            localStorage.setItem('sessionToken', sessionToken);
+            if (_.get(params, 'rememberCheck')) {
+              localStorage.setItem('sessionToken', sessionToken);
+            } else {
+              sessionStorage.setItem('sessionToken', sessionToken);
+            }
           }
-
           const responseData = result || response.data;
 
           resolve(responseData);

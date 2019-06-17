@@ -6,14 +6,16 @@ import { FormControl } from 'react-bootstrap';
 class SearchForm extends React.Component {
   render() {
     return (
-      <Form>
-        <Field
-          name="search"
-          type="text"
-          placeholder="Search people..."
-          component={TextFields}
-        />
-      </Form>
+      <div className="search-contact" >
+        <Form>
+          <Field
+            name="search"
+            type="text"
+            placeholder="Search people..."
+            component={TextFields}
+          />
+        </Form>
+      </div>
     );
   }
 }

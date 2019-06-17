@@ -6,37 +6,29 @@ import { createStructuredSelector } from 'reselect';
 import { makeSelectNavTabStatus } from '../../ControlProvider/selector';
 import { makeSelectCurrentUser } from 'containers/authProvider/selector';
 import { Avatar } from '../../../components/ComponentForms';
-import { ItemChat, ItemContact } from '../../../components';
+import { ItemContact } from '../../../components';
 import iconAddFr from 'images/add-friend.svg';
 import SearchForm from './SearchForm';
 import PopupAddFriend from './popupAddFriend';
 import { TAB_NOTIFICATION, TAB_CONTACT } from 'utils/constants';
-import _ from 'lodash';
 import { Button } from 'react-bootstrap';
 import './style.scss';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
-
-import Grid from '@material-ui/core/Grid';
+import _ from 'lodash';
 import DateFnsUtils from '@date-io/date-fns';
 import {
   MuiPickersUtilsProvider,
-  KeyboardTimePicker,
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 import uploadIcon from 'images/icons8-upload-64.png';
 
-import { ImagePicker } from '../../../components/ComponentForms'
 import { withRouter } from 'react-router-dom';
 
 
@@ -75,6 +67,10 @@ class SideBarNav extends Component {
       reader.readAsDataURL(selectedFile);
     }
   }
+
+  // searchContact = (value) => {
+  //   console.log(value.toJS().search)
+  // }
 
 
   ItemUserContact(user) {
@@ -150,7 +146,7 @@ class SideBarNav extends Component {
             <DialogTitle id="alert-dialog-title">Edit profile</DialogTitle>
             <DialogContent>
               <div className="image-picker">
-                <div className="image-preview" style={this.state.updateUser.avatarUrl ? { backgroundImage: `url(${this.state.updateUser.avatarUrl})` } : { backgroundImage: `url(https://img.icons8.com/cotton/64/000000/person-male.png)` }} />
+                <div className="image-preview" style={_.get(this.state, 'updateUser.avatarUrl') ? { backgroundImage: `url(${this.state.updateUser.avatarUrl})` } : { backgroundImage: `url('${avatarUrl}')` }} />
                 <div className="control">
                   <div className="image-picker-label-1">Profile picture</div>
                   <div className="image-picker-label-2">(320px × 320px以上)</div>
@@ -223,9 +219,19 @@ class SideBarNav extends Component {
         {
           navTabStatus === TAB_CONTACT &&
           <div className="list-contact" >
-            {!_.isEmpty(friends) && friends.map((i, index) => {
-              return <ItemContact active={i._id === this.props.idFriendCurrent} key={index} user={i} onClick={() => { this.props.onChangeUserChatting(i) }} />
-            })}
+            {/* <SearchForm onChange={(e) => { this.searchContact(e) }} /> */}
+            {
+              !_.isEmpty(friends) && friends.map((i, index) => {
+                return <ItemContact active={i._id === this.props.idFriendCurrent} key={index} user={i} onClick={() => { this.props.onChangeUserChatting(i) }} />
+              })
+            }
+            {
+              _.isEmpty(friends) &&
+              <div>
+                Nofriend
+              </div>
+            }
+
           </div>
         }
       </div>

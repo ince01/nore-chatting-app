@@ -11,7 +11,8 @@ import _ from 'lodash';
 
 export function* handleLogin(action) {
   const requestURL = '/login';
-  const params = _.pick(action.data, ['email', 'password']);
+  const params = _.pick(action.data, ['email', 'password', 'rememberCheck']);
+
   try {
     const userData = yield call(request, requestURL, params);
     yield put(loginSuccess(userData));

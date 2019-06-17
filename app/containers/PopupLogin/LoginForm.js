@@ -11,26 +11,28 @@ class LoginForm extends React.Component {
 
     return (
       <form onSubmit={handleSubmit}>
-        <Field
-          name="email"
-          type="text"
-          placeholder="email@address.com"
-          component={TextFields}
-          label="Email"
-        />
-        <Field
-          name="password"
-          type="password"
-          placeholder="Password"
-          component={TextFields}
-          label="Password"
-        />
+        <div className="fields-form-login" > 
+          <Field
+            name="email"
+            type="text"
+            placeholder="email@address.com"
+            component={TextFields}
+            label="Email"
+          />
+          <Field
+            name="password"
+            type="password"
+            placeholder="Password"
+            component={TextFields}
+            label="Password"
+          />
+        </div>
         <div className="custom-control custom-checkbox">
           <Field type="checkbox" className="custom-control-input" id="rememberCheck" component="input" name="rememberCheck" />
           <label className="custom-control-label" htmlFor="rememberCheck">Keep me signed in</label>
         </div>
         <div>
-          <button className="btn btn-primary d-flex justify-content-center login-button" type="submit">Sing in</button>
+          <button className="btn btn-primary d-flex justify-content-center login-button" type="submit">Sign in</button>
         </div>
       </form>
     );
