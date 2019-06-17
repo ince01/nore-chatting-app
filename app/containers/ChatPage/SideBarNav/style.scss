@@ -19,7 +19,10 @@
             flex-direction: row;
             padding: 8px;
             cursor: pointer;
-            outline: none;
+            
+            .view-click-avatar{
+                outline: none;
+            }
 
             .avatar {
                 img {
