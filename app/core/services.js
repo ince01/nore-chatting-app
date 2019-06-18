@@ -8,7 +8,7 @@ export default class API {
 
       console.log(process.env)
       this.axios = axios.create({
-        baseURL: (process.env.REACT_APP_PUBLIC_SERVER_URL || 'http://localhost:5000'),
+        baseURL: (process.env.REACT_APP_PUBLIC_SERVER_URL || 'https://nore-chatting-server.herokuapp.com/'),
         responseType: 'json'
       });
       this.axios.defaults.params = {};

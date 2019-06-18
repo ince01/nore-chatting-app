@@ -23,7 +23,7 @@ class ChatPage extends Component {
 
   callAPI() {
     const instance = axios.create({
-      baseURL: process.env.REACT_APP_PUBLIC_SERVER_URL || 'http://localhost:5000',
+      baseURL: process.env.REACT_APP_PUBLIC_SERVER_URL || 'https://nore-chatting-server.herokuapp.com/',
       responseType: 'json'
     });
     let sessionToken = localStorage.getItem('sessionToken') || sessionStorage.getItem('sessionToken');
@@ -33,7 +33,7 @@ class ChatPage extends Component {
 
   componentDidMount() {
     let sessionToken = localStorage.getItem('sessionToken') || sessionStorage.getItem('sessionToken');
-    const baseURL = process.env.REACT_APP_PUBLIC_SERVER_URL || 'http://localhost:5000';
+    const baseURL = process.env.REACT_APP_PUBLIC_SERVER_URL || 'https://nore-chatting-server.herokuapp.com/';
     this.socket = io(`${baseURL}?token=${sessionToken}`);
     const app = this;
     this.socket.on('MESS', function (data) {
